@@ -1,0 +1,43 @@
+3rd wala //Wap in c to calculate the ATAT and AWT.
+#include<stdio.h>
+int main(){
+int PID[5]={0,1,2,3,4};
+int At[5]={0,1,2,3,4};
+int Bt[5]={5,7,6,2,4};
+int Ct[5];
+int TAT[5];
+int ATAT;
+int n=sizeof(PID)/sizeof(int);
+Ct[0]=At[0]+Bt[0];
+
+for(int i=1;i<5;i++){
+ Ct[i]=Ct[i-1]+Bt[i];
+}
+
+//for TAT.....
+int SumTAT=0;
+for(int i=0;i<5;i++){
+TAT[i]=Ct[i]-At[i];
+SumTAT=SumTAT+TAT[i];
+}
+
+//for Average TAT
+ printf("Average TAT:");
+ ATAT=SumTAT/n;
+ printf("%d",ATAT);
+ 
+ //For Wt.....
+ int Wt[5];
+ int AWT;
+ int SumWt=0;
+ for(int i=0;i<5;i++){
+ Wt[i]=TAT[i]-Bt[i];
+ SumWt=SumWt+Wt[i];
+ }
+ 
+ 
+ //for Average Wt....
+ printf("\nAverage waiting time:");
+ AWT=SumWt/n; 
+ printf("%d",AWT);
+}
